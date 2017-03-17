@@ -39,7 +39,7 @@ import java.io.InputStreamReader;
 public final class MemcacheClient {
 
     static final boolean SSL = System.getProperty("ssl") != null;
-    static final String HOST = System.getProperty("host", "127.0.0.1");
+    static final String HOST = System.getProperty("host", "192.168.56.101");
     static final int PORT = Integer.parseInt(System.getProperty("port", "11211"));
 
     public static void main(String[] args) throws Exception {
@@ -81,10 +81,12 @@ public final class MemcacheClient {
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
             for (;;) {
                 String line = in.readLine();
+                System.out.println("cmd:"+line);
                 if (line == null) {
                     break;
                 }
                 if ("quit".equals(line.toLowerCase())) {
+                    System.err.println("系统正在退出……");
                     ch.close().sync();
                     break;
                 }

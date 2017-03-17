@@ -25,6 +25,8 @@ import io.netty.channel.sctp.SctpChannelOption;
 import io.netty.channel.sctp.nio.NioSctpChannel;
 
 /**
+ * 流量控制传输协议
+ *
  * Sends one message when a connection is open and echoes back any received
  * data to the server over SCTP connection.
  *

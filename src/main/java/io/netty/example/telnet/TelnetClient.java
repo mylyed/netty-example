@@ -30,6 +30,7 @@ import java.io.InputStreamReader;
 
 /**
  * Simplistic telnet client.
+ * telnet的示例   很容易看懂
  */
 public final class TelnetClient {
 

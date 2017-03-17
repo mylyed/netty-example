@@ -32,6 +32,10 @@ import io.netty.handler.logging.LoggingHandler;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ * 本地回声
+ * 主要依赖----->LocalAddress
+ */
 public final class LocalEcho {
 
     static final String PORT = System.getProperty("port", "test_port");

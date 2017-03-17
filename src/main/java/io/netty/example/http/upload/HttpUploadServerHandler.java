@@ -90,6 +90,11 @@ public class HttpUploadServerHandler extends SimpleChannelInboundHandler<HttpObj
         DiskAttribute.baseDirectory = null; // system temp directory
     }
 
+    /**
+     * 闲置时调用这个-->清理
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         if (decoder != null) {

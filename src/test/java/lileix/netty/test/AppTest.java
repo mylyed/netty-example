@@ -15,9 +15,16 @@ public class AppTest {
     static SimpleDateFormat dateFormatter = new SimpleDateFormat(HTTP_DATE_FORMAT, Locale.US);
 
     public static void main(String[] args) {
-        String path = SystemPropertyUtil.get("user.dir");
-        System.out.println(path);
-        System.out.println(System.getProperty("user.dir"));
-        System.out.println(dateFormatter.format(new Date()));
+//        String path = SystemPropertyUtil.get("user.dir");
+//        System.out.println(path);
+//        System.out.println(System.getProperty("user.dir"));
+//        System.out.println(dateFormatter.format(new Date()));
+         final StringBuilder buf = new StringBuilder();
+        buf.append("aaaaaaa");
+        System.out.println(buf.toString());
+        buf.setLength(0);
+        System.out.println(buf.toString());
+        buf.append("bbbb");
+        System.out.println(buf.toString());
     }
 }

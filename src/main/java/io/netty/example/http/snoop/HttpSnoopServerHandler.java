@@ -64,7 +64,7 @@ public class HttpSnoopServerHandler extends SimpleChannelInboundHandler<Object> 
             if (HttpUtil.is100ContinueExpected(request)) {
                 send100Continue(ctx);
             }
-
+            //设置StringBuilder的长度为0 想当于初始化StringBuilder
             buf.setLength(0);
             buf.append("WELCOME TO THE WILD WILD WEB SERVER\r\n");
             buf.append("===================================\r\n");
@@ -95,10 +95,10 @@ public class HttpSnoopServerHandler extends SimpleChannelInboundHandler<Object> 
                 }
                 buf.append("\r\n");
             }
-
+            //最佳解码结果??
             appendDecoderResult(buf, request);
         }
-
+        //解析请求体
         if (msg instanceof HttpContent) {
             HttpContent httpContent = (HttpContent) msg;
 
@@ -125,6 +125,13 @@ public class HttpSnoopServerHandler extends SimpleChannelInboundHandler<Object> 
                     buf.append("\r\n");
                 }
 
+                //-----myself code
+                buf.append("----------lileix-----------").append("\r\n");
+                buf.append("msg class类型:").append(msg.getClass().toGenericString()).append("\r\n");
+                buf.append("msg.toString:").append(msg.toString()).append("\r\n");
+                buf.append("----------lileix-----------").append("\r\n");
+
+                //---
                 if (!writeResponse(trailer, ctx)) {
                     // If keep-alive is off, close the connection once the content is fully written.
                     ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);

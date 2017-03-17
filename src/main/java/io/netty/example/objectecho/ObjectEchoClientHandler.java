@@ -15,6 +15,8 @@
  */
 package io.netty.example.objectecho;
 
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -28,20 +30,22 @@ import java.util.List;
  */
 public class ObjectEchoClientHandler extends ChannelInboundHandlerAdapter {
 
-    private final List<Integer> firstMessage;
+    private final List<String> firstMessage;
 
     /**
      * Creates a client-side handler.
      */
     public ObjectEchoClientHandler() {
-        firstMessage = new ArrayList<Integer>(ObjectEchoClient.SIZE);
+        firstMessage = new ArrayList<String>(ObjectEchoClient.SIZE);
         for (int i = 0; i < ObjectEchoClient.SIZE; i ++) {
-            firstMessage.add(Integer.valueOf(i));
+            firstMessage.add("字符串->" + Integer.valueOf(i));
         }
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
+        System.out.println("客服端写第一条信息：" + firstMessage.toString());
+
         // Send the first message if this handler is a client-side handler.
         ctx.writeAndFlush(firstMessage);
     }
@@ -49,7 +53,18 @@ public class ObjectEchoClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         // Echo back the received object to the server.
-        ctx.write(msg);
+        // ctx.write(msg);
+
+        System.out.println("服务器响应CLASS类型：" + msg.getClass().getCanonicalName());
+        System.out.println("服务器响应:" + msg);
+//        try {
+//            System.out.println("客服端关闭:");
+//            ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        ctx.close();
+
     }
 
     @Override

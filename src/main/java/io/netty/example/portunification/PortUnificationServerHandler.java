@@ -30,6 +30,7 @@ import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslHandler;
+import io.netty.util.AsciiString;
 
 import java.util.List;
 
@@ -63,8 +64,11 @@ public class PortUnificationServerHandler extends ByteToMessageDecoder {
         if (isSsl(in)) {
             enableSsl(ctx);
         } else {
+            //读取第一个字节
             final int magic1 = in.getUnsignedByte(in.readerIndex());
+            //读取第二个字节
             final int magic2 = in.getUnsignedByte(in.readerIndex() + 1);
+            System.out.println("magic1:"+ magic1 + ",magic2:"+ magic2);
             if (isGzip(magic1, magic2)) {
                 enableGzip(ctx);
             } else if (isHttp(magic1, magic2)) {
@@ -93,6 +97,12 @@ public class PortUnificationServerHandler extends ByteToMessageDecoder {
         return false;
     }
 
+    /**
+     * 判断是否是http协议
+     * @param magic1
+     * @param magic2
+     * @return
+     */
     private static boolean isHttp(int magic1, int magic2) {
         return
             magic1 == 'G' && magic2 == 'E' || // GET

@@ -16,6 +16,7 @@
 
 /**
  * Examples show how to use UDT with simple Echo Handlers.
+ * 基于UDP的数据传输协议
  */
 package io.netty.example.udt.echo;
 

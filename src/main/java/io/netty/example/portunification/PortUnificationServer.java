@@ -33,6 +33,8 @@ import io.netty.handler.ssl.util.SelfSignedCertificate;
  * <p>
  * Because SSL and GZIP are enabled on demand, 5 combinations per protocol
  * are possible: none, SSL only, GZIP only, SSL + GZIP, and GZIP + SSL.
+ *
+ * 一个端口实现多种协议的试用
  */
 public final class PortUnificationServer {
 

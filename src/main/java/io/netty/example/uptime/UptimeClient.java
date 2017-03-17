@@ -30,6 +30,8 @@ import io.netty.handler.timeout.IdleStateHandler;
  * Connects to a server periodically to measure and print the uptime of the
  * server.  This example demonstrates how to implement reliable reconnection
  * mechanism in Netty.
+ * 翻译--->定期连接到服务器来测量和打印服务器的正常运行时间。这个例子演示了如何在网络实现可靠的连接机构。
+ * 服务端断线 ，客户端重连？？
  */
 public final class UptimeClient {
 

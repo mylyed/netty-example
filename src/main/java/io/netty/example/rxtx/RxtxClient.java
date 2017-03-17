@@ -27,6 +27,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
 /**
+ * 串行通信实例 略过  ε=ε=ε=┏(゜ロ゜;)┛
  * Sends one message to a serial device
  */
 public final class RxtxClient {

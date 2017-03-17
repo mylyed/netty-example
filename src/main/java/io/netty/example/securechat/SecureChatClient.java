@@ -31,6 +31,9 @@ import java.io.InputStreamReader;
 
 /**
  * Simple SSL chat client modified from {@link TelnetClient}.
+ *
+ * 聊天
+ *
  */
 public final class SecureChatClient {
 
