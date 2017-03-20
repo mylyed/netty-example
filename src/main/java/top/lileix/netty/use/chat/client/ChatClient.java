@@ -14,7 +14,7 @@ public class ChatClient {
 
     static final String HOST = "127.0.0.1";
     static final int PORT = 1017;
-public  static final int READ_TIMEOUT=10;
+public  static final int READ_TIMEOUT=3;
     public static void main(String[] args) {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
